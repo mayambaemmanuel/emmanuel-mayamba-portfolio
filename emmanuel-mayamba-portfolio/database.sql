@@ -1,0 +1,96 @@
+-- Import this file in phpMyAdmin. Existing rows are preserved.
+CREATE DATABASE IF NOT EXISTS portfolio CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE portfolio;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(254) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS messages (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT UNSIGNED NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(254) NOT NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    INDEX (user_id, id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS portfolio_content (
+    content_key VARCHAR(100) PRIMARY KEY,
+    content_value TEXT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT IGNORE INTO portfolio_content (content_key, content_value) VALUES
+('emmanuel_mayamba_portfolio', 'Emmanuel Mayamba | Portfolio'),
+('skip_to_main_content', 'Skip to main content'),
+('em', 'EM'),
+('symbol', '.'),
+('symbol_2', '☰'),
+('menu', 'Menu'),
+('about', 'About'),
+('skills', 'Skills'),
+('projects', 'Projects'),
+('contact', 'Contact'),
+('student_aspiring_web_developer', 'Student · Aspiring web developer'),
+('emmanuel', 'Emmanuel'),
+('mayamba', 'Mayamba.'),
+('i_am_a_student_and_an_aspiring_web_developer_who_enjoys', 'I am a student and an aspiring web developer who enjoys turning ideas into clear, thoughtful digital experiences.'),
+('view_my_work', 'View my work'),
+('let_s_connect', 'Let’s connect'),
+('symbol_3', '→'),
+('01_introduction', '01 / Introduction'),
+('curiosity_craft_progress', 'Curiosity. Craft. Progress.'),
+('emmanuel_mayamba', 'Emmanuel Mayamba'),
+('learning_building', 'Learning & building'),
+('a_little_about_me', 'A little about me'),
+('building_skills_one_project_at_a_time', 'Building skills, one project at a time.'),
+('i_am_emmanuel_mayamba_a_curious_learner_with_an_interes', 'I am Emmanuel Mayamba, a curious learner with an interest in web design and development. I enjoy solving problems, learning new technologies, and creating websites that are simple, accessible, and pleasant to use.'),
+('this_portfolio_is_a_collection_of_my_learning_journey_c', 'This portfolio is a collection of my learning journey, coursework, and projects as I continue to grow my technical and creative skills.'),
+('learning_focus', 'Learning focus'),
+('explore_another_focus', 'Explore another focus'),
+('what_i_m_learning', 'What I’m learning'),
+('my_current_skill_set', 'My current skill set'),
+('symbol_4', '</>'),
+('html', 'HTML'),
+('creating_meaningful_page_structure_with_clean_semantic_', 'Creating meaningful page structure with clean, semantic markup.'),
+('symbol_5', '#'),
+('css', 'CSS'),
+('designing_responsive_layouts_with_colour_spacing_and_ty', 'Designing responsive layouts with colour, spacing, and typography.'),
+('symbol_6', '✦'),
+('problem_solving', 'Problem solving'),
+('breaking_down_challenges_and_building_practical_solutio', 'Breaking down challenges and building practical solutions step by step.'),
+('selected_work', 'Selected work'),
+('projects_coursework', 'Projects & coursework'),
+('more_projects_will_be_added_here_as_my_portfolio_grows', 'More projects will be added here as my portfolio grows.'),
+('01', '01'),
+('web_design', 'Web design'),
+('personal_portfolio_website', 'Personal Portfolio Website'),
+('a_responsive_website_that_introduces_who_i_am_the_skill', 'A responsive website that introduces who I am, the skills I am developing, and the work I am proud to share.'),
+('responsive_design', 'Responsive design'),
+('02', '02'),
+('coming_soon', 'Coming soon'),
+('next_learning_project', 'Next learning project'),
+('i_m_currently_exploring_new_ideas_and_will_add_another_', 'I’m currently exploring new ideas and will add another project here soon.'),
+('get_in_touch', 'Get in touch'),
+('let_s_create_something_meaningful', 'Let’s create something meaningful.'),
+('have_a_question_or_would_like_to_discuss_a_project_i_wo', 'Have a question or would like to discuss a project? I would be happy to hear from you.'),
+('send_me_an_email', 'Send me an email'),
+('all_fields_are_required_this_demo_checks_your_message_l', 'All fields are required. This demo checks your message locally; it does not send it. Use the email link above to get in touch.'),
+('your_name', 'Your name'),
+('email_address', 'Email address'),
+('message', 'Message'),
+('check_message', 'Check message'),
+('please_use_the_email_link_to_get_in_touch_enable_javasc', 'Please use the email link to get in touch. Enable JavaScript to try the contact form.'),
+('symbol_7', '©'),
+('2026', '2026'),
+('emmanuel_mayamba_built_with_html_css_javascript', 'Emmanuel Mayamba. Built with HTML, CSS & JavaScript.'),
+('back_to_top', 'Back to top ↑'),
+('portrait_path', 'assets/emmanuel-mayamba.png'),
+('contact_email', 'mayambaemmanuel@gmail.com'),
+('learning_topics', '["HTML: giving each page a clear structure with semantic elements.", "CSS: making layouts adapt comfortably to desktop and mobile screens.", "JavaScript: connecting buttons, forms, and navigation to useful interactions."]');
